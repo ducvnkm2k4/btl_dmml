@@ -4,11 +4,12 @@ import matplotlib.pyplot as plt
 
 # Tạo DataFrame mẫu
 data = pd.read_csv('data\\diabetes.csv')
-df = pd.DataFrame(data)
 
+# heatmap xet tính tương quan giữa các thuộc tính
 # Tính ma trận tương quan
-correlation_matrix = df.corr()
+correlation_matrix = data.corr()
 
 # Vẽ heatmap
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 plt.show()
+
