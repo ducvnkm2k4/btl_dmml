@@ -1,35 +1,15 @@
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
-import seaborn as sns
-import scipy.stats as stats
+from url_show_chart import linkUrl
 
-data = pd.read_csv('data/diabetes.csv')
+data = pd.read_csv(linkUrl())
+# Tính tần suất xuất hiện của giá trị 1 và 0
+labels = ['0', '1']  # Nhãn cho các phần tử
+sizes = [np.sum(data['Outcome'] == 0), np.sum(data['Outcome'] == 1)]  # Số lượng phần tử 0 và 1
 
-plt.figure(figsize=(15, 10))
-
-# Histogram
-plt.subplot(2, 2, 1)
-plt.hist(data['Outcome'], bins=20, color='skyblue', edgecolor='black')
-plt.title('Histogram')
-plt.xlabel('Giá trị Outcome')
-plt.ylabel('Tần suất')
-
-# Density Plot
-plt.subplot(2, 2, 2)
-sns.kdeplot(data['Outcome'], color='blue', fill=True)
-plt.title('Density Plot')
-plt.xlabel('Giá trị Outcome')
-
-# Box Plot
-plt.subplot(2, 2, 3)
-sns.boxplot(data['Outcome'], color='lightgreen')
-plt.title('Box Plot')
-
-# QQ Plot
-plt.subplot(2, 2, 4)
-stats.probplot(data['Outcome'], dist="norm", plot=plt)
-plt.title('QQ Plot')
-
-plt.tight_layout()
+# Vẽ biểu đồ tròn
+plt.figure(figsize=(8, 8))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=['lightcoral', 'lightskyblue'], startangle=90)
+plt.axis('equal')  # Đảm bảo biểu đồ là hình tròn
 plt.show()
-

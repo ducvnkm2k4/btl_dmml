@@ -1,17 +1,11 @@
 import pandas as pd
 # Đọc dữ liệu từ tệp CSV
-data = pd.read_csv('data/diabetes.csv')
+data = pd.read_csv('data/diabetes_clean_data.csv')
 
 # Kiểm tra cấu trúc dữ liệu
 check = {
-    'thuộc tính': ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin','BMI', 'DiabetesPedigreeFunction', 'Age', 'Outcome'],
-    'số lượng': [data[col].count() for col in ['Pregnancies', 'Glucose', 'BloodPressure', 
-'SkinThickness', 'Insulin', 'BMI','DiabetesPedigreeFunction', 'Age', 'Outcome']],
-    'giá trị bằng 0':[data[col].eq(0).sum() for col in ['Pregnancies', 'Glucose', 
-                                                             'BloodPressure', 'SkinThickness', 
-                                                             'Insulin', 'BMI', 
-                                                             'DiabetesPedigreeFunction', 'Age', 
-                                                             'Outcome']],
+    'thuộc tính': ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin','BMI', 'DPF', 'Age', 'Outcome'],
+    'số lượng': [data[col].count() for col in ['Pregnancies', 'Glucose', 'BloodPressure',  'SkinThickness', 'Insulin', 'BMI','DiabetesPedigreeFunction', 'Age', 'Outcome']],
     'giá trị thiếu': [data[col].isnull().sum() for col in ['Pregnancies', 'Glucose', 
                                                              'BloodPressure', 'SkinThickness', 
                                                              'Insulin', 'BMI', 
