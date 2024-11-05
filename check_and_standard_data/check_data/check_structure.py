@@ -1,6 +1,6 @@
 import pandas as pd
 # Đọc dữ liệu từ tệp CSV
-data = pd.read_csv('data/diabetes_clean_data.csv')
+data = pd.read_csv('data/diabetes_standard_data.csv')
 
 # Kiểm tra cấu trúc dữ liệu
 check = {
